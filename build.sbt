@@ -1,8 +1,8 @@
 name := "figer"
 
-version := "0"
+version := "1"
 
-scalaVersion := "2.10.1"
+scalaVersion := "2.13.4"
 
 javaOptions += "-Xmx24G"
 
@@ -25,11 +25,11 @@ libraryDependencies ++= Seq(
   "javax.servlet" % "javax.servlet-api" % "3.0.1" % "provided"
 )
 
-jetty()
+//jetty()
 
-webappSrc in webapp <<= (sourceDirectory in Compile) map  { _ / "java/edu/washington/cs/figer/web/webapp" }
+//webappSrc in webapp <<= (sourceDirectory in Compile) map  { _ / "java/edu/washington/cs/figer/web/webapp" }
 
-resolvers ++= Seq( "Oracle Releases" at "http://download.oracle.com/maven")
+resolvers ++= Seq( "Oracle Releases" at "https://download.oracle.com/maven")
 
 EclipseKeys.projectFlavor := EclipseProjectFlavor.Java
 
