@@ -2,7 +2,7 @@ name := "figer"
 
 version := "1"
 
-scalaVersion := "2.13.4"
+scalaVersion := "2.13.8"
 
 javaOptions += "-Xmx24G"
 
@@ -10,6 +10,8 @@ fork in run := true
 
 val stanfordNlp = "edu.stanford.nlp" % "stanford-corenlp" % "1.3.4" artifacts (Artifact("stanford-corenlp", "models"), Artifact("stanford-corenlp"))
 //val stanfordNlp = "edu.stanford.nlp" % "stanford-corenlp" % "3.4" artifacts (Artifact("stanford-corenlp", "models"), Artifact("stanford-corenlp"))
+
+enablePlugins(JettyPlugin)
 
 libraryDependencies ++= Seq(
   "commons-lang" % "commons-lang" % "2.4" ,
@@ -22,10 +24,10 @@ libraryDependencies ++= Seq(
   "com.google.protobuf" % "protobuf-java" % "2.4.1",
   "org.slf4j" % "slf4j-api" % "1.5.8",
   "org.slf4j" % "slf4j-log4j12" % "1.5.8",
-  "javax.servlet" % "javax.servlet-api" % "3.0.1" % "provided"
+  "javax.servlet" % "javax.servlet-api" % "3.0.1" % "provided",
+  "org.eclipse.jetty" % "jetty-webapp" % "9.1.0.v20131115" % "container",
+  "org.eclipse.jetty" % "jetty-plus"   % "9.1.0.v20131115" % "container"
 )
-
-//jetty()
 
 //webappSrc in webapp <<= (sourceDirectory in Compile) map  { _ / "java/edu/washington/cs/figer/web/webapp" }
 
@@ -34,3 +36,5 @@ resolvers ++= Seq( "Oracle Releases" at "https://download.oracle.com/maven")
 EclipseKeys.projectFlavor := EclipseProjectFlavor.Java
 
 EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource
+
+containerPort := 8081

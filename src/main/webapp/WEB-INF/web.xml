@@ -10,4 +10,12 @@
         <servlet-name>Figer Web Service</servlet-name>
         <url-pattern>/figer</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Figer Endpoint</servlet-name>
+        <servlet-class>edu.washington.cs.figer.web.EndpointServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Figer Endpoint</servlet-name>
+        <url-pattern>/api</url-pattern>
+    </servlet-mapping>
 </web-app>

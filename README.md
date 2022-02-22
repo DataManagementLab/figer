@@ -46,9 +46,36 @@ Alternatively, you can change the parameter values (e.g. the input file name) in
 
 Run
 
-    $ sbt ~container:start
+    $ sbt ~jetty:start
 
-and go to `localhost:8080/index.html` for a simple web demo.
+and go to `localhost:8081/index.html` for a simple web demo.
+
+You will also find a simple API endpoint returning the mentions in JSON format at 
+`localhost:8081/api?text=your+text+to+annotate`.
+
+### Returned format
+
+The result of calling the API endpoint will look like this:
+
+```
+{
+  "status": 200,
+  "data": [
+    {
+      "mention": "japan ",
+      "label": "/location@4.4072539635642283E-4,/organization/company@1.0969357624212788,/location/country@0.29935229660185275",
+      "tag": "NN",
+      "start_char": 0,
+      "end_char": 8
+    },
+    ...
+  ],
+  "sentence_offsets": [
+    0,
+    135
+  ]
+}
+```
 
 ## Training Data
 
